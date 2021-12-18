@@ -1,15 +1,24 @@
 let s;
+let BG = 30;
 
-function setup() {
-  s = p5.min(p5.windowWidth, p5.windowHeight);
-  createCanvas(s, s);
-}
+//generating a seed that updates avery 30 sec
+let seed = Math.floor(Date.now() / 5000);
+console.log(seed);
 
-function draw() {
-  background(220);
-}
-
-windowResized = function () {
+setup = () => {
   s = min(windowWidth, windowHeight);
-  p5.resizeCanvas(s, s);
+  createCanvas(s, s);
+  angleMode(DEGREES);
+  rectMode(RADIUS);
+  randomSeed(seed);
+  noiseSeed(seed);
+};
+
+draw = () => {
+  background(BG);
+};
+
+windowResized = () => {
+  s = min(windowWidth, windowHeight);
+  resizeCanvas(s, s);
 };
